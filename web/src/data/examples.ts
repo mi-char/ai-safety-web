@@ -16,6 +16,7 @@ export interface Example {
   preview?: boolean;
   draftReplacement?: boolean;
   situation: string;
+  prompt?: string;
   question: string;
   options: { label: string; feedback: string }[];
   correctOption: number;
@@ -114,6 +115,7 @@ export const examples: Example[] = [
     description: 'I přesvědčivá odpověď se zdrojem může původní doporučení zkreslit.',
     duration: '2 min',
     situation: 'AI asistent vám nabídne zdánlivě jasnou radu: „Podle Policie ČR poznáte podvržený hlas vždy podle nepřirozené intonace.“ Jde o modelovou odpověď, nikoli o výstup konkrétní služby.',
+    prompt: 'Jak podle Policie ČR poznám podvržený hlas? Uveď zdroj své odpovědi.',
     activity: {
       title: 'Srovnání tvrzení',
       items: [
@@ -138,6 +140,7 @@ export const examples: Example[] = [
     description: 'Asistent shrnuje cizí dokument, který obsahuje také požadavek na změnu úkolu.',
     duration: '2 min',
     situation: 'Pomáháte v místní knihovně a chcete shrnout zápis z porady. V dokumentu narazíte na cizí požadavek, aby asistent změnil úkol. Žádný živý asistent zde neběží.',
+    prompt: 'Shrň hlavní témata přiloženého zápisu z porady místní knihovny ve třech bodech.',
     activity: {
       title: 'Zápis z knihovny',
       items: [
@@ -162,6 +165,7 @@ export const examples: Example[] = [
     description: 'Pracovní návrh náhradní ukázky o tom, jak přemýšlet o sdílených údajích.',
     duration: '2 min', draftReplacement: true,
     situation: 'V malém knihkupectví chystáte pozvánku na autorské čtení. Chcete pomoci s obecným textem a uvažujete, zda asistentovi vložit celý seznam zákazníků.',
+    prompt: 'Napiš stručnou a přátelskou pozvánku na autorské čtení v místním knihkupectví.',
     activity: {
       title: 'Podklady k pozvánce',
       items: [
@@ -191,6 +195,7 @@ export const examples: Example[] = [
     description: 'Prohlédněte si zprávu, kterou má asistent shrnout.',
     duration: '2 min',
     situation: 'V sousedském spolku chcete pomocí asistenta shrnout e-mail k přípravě setkání. Prohlédněte si celé tělo zprávy. Žádný skutečný e-mail ani asistent zde neběží.',
+    prompt: 'Shrň následující e-mail o přípravě sousedského setkání ve třech bodech.',
     question: 'Kolik částí zprávy obsahuje pokyn, který může změnit shrnutí?',
     email: {
       sender: 'Sousedský spolek', subject: 'Příprava sousedského setkání', greeting: 'Dobrý den,',
@@ -211,11 +216,11 @@ export const examples: Example[] = [
   },
   {
     slug: 'real-or-generated', number: '06', category: 'Ověřování informací',
-    title: 'Který portrét je skutečný?',
-    description: 'Tři portréty, jeden fotoaparát. Zjistěte, jak snadno může vzhled zmást.',
+    title: 'Které portréty jsou skutečné?',
+    description: 'Tři portréty a otázka jejich původu. Zjistěte, jak snadno může vzhled zmást.',
     duration: '2 min', preview: true,
-    situation: 'Před vámi jsou tři portréty. Jeden je fotografie skutečné osoby a dva byly vytvořeny pomocí AI. Původ jednotlivých snímků se dozvíte ve vysvětlení.',
-    question: 'Který z portrétů vznikl fotoaparátem?',
+    situation: 'Před vámi jsou tři portréty. Některé mohou být fotografie skutečných osob, jiné mohly vzniknout pomocí AI. Původ jednotlivých snímků se dozvíte ve vysvětlení.',
+    question: 'Které portréty vznikly fotoaparátem? Vyberte všechny, které považujete za fotografie.',
     portraits: [
       { src: 'images/portrait-a.jpg', alt: 'Portrét ženy s hnědými vlasy a ofinou na šedém pozadí.', width: 640, height: 640 },
       { src: 'images/portrait-b.jpg', alt: 'Portrét ženy s tmavými vlasy a brýlemi, s rukou opřenou o tvář.', width: 640, height: 453 },
