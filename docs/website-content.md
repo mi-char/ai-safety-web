@@ -8,7 +8,7 @@ Tento soubor je samostatným pracovním plánem webového projektu. Další změ
 
 ## Účel a publikum
 
-Jeden veřejný web má před akcí představit přednášku, o přestávce nabídnout krátké dobrovolné ukázky a po akci ponechat ukázky a praktické zdroje dostupné. Není testem znalostí ani detektorem podvodů; nevyžaduje účet, instalaci ani zadávání osobních nebo firemních údajů.
+Jeden veřejný web má před akcí představit přednášku, o přestávce nabídnout krátké dobrovolné ukázky a po akci ponechat ukázky a praktické zdroje dostupné. Dobrovolný bodovaný test se týká pouze konkrétních situací a není detektorem podvodů ani zárukou bezpečí; web nevyžaduje účet, instalaci ani zadávání osobních nebo firemních údajů.
 
 Primárně je určen veřejnosti a netechnickým návštěvníkům včetně podnikatelů. Jazyk má být český, srozumitelný, věcný a praktický.
 
@@ -28,7 +28,7 @@ Pracovní scénář přednášky počítá s přibližně 70 minutami obsahu, 15
 ### Přestávkový rozcestník
 
 - Vlastní stálá adresa určená pro QR kód a čitelný textový odkaz na slidu. Stávající přestávkový slide je zatím neobsahuje; jeho změna vyžaduje samostatný návrh a schválení. QR kód připravit až po ověření veřejné adresy.
-- Dobrovolné ukázky s tématem a orientační délkou 1–3 minuty; bez skóre, časového limitu a přihlášení.
+- Dobrovolné ukázky s tématem a orientační délkou 1–3 minuty; bez časového limitu a přihlášení. Vedle jednotlivých ukázek nabídnout nepovinný test s body za správné odpovědi a výsledkem na konci.
 - Navržené oblasti: doma a rodina, ověřování a podvody, práce a firemní data. Odkazy též na praktický postup při incidentu, pozvánku a zdroje.
 - Ukázky navazující na druhou polovinu označit jako ochutnávku. Přestávka zůstává volná a návštěvník může kdykoli odejít.
 
@@ -40,12 +40,15 @@ Po akci mají adresy zůstat stejné; stav pozvánky a případné schválené v
 
 ### Hravý prvek: krátké mise
 
-**Návrh k potvrzení:** samostatné ukázky mohou fungovat jako dobrovolné mise se třemi částmi: situace, volba a vysvětlení s praktickým krokem. Textový ukazatel pomáhá orientaci, není skórem ani časovým limitem.
+Samostatné ukázky mohou fungovat jako dobrovolné mise se třemi částmi: situace, volba a vysvětlení s praktickým krokem. V samostatném dobrovolném testu zobrazit na konci body a věcný komentář; výsledek nepředstavuje záruku bezpečí. Nepoužívat žebříčky ani časové limity.
 
 - Po volbě vysvětlit její důsledky bez hodnocení návštěvníka; umožnit změnu odpovědi i přechod k vysvětlení bez volby.
 - Jako symbolickou odměnu zobrazit kartu s jedním praktickým doporučením a zdrojem. Karta je dostupná i bez odpovědi a není zárukou bezpečí ani potvrzením znalostí.
 - Například u fiktivního naléhavého telefonátu návštěvník vybírá způsob ověření požadavku; karta doporučí přerušit hovor a kontaktovat příbuzného přes dříve známý kontakt. Konečné formulace a zdrojový kontext ověřit před zveřejněním.
 - Mise jsou nezávislé a nepovinné. Volbu a postup držet jen v paměti zobrazené stránky, nikam je neodesílat ani neukládat. Bez JavaScriptu musí zůstat zadání, vysvětlení, karta a zdroj čitelné.
+- Jednotlivé situace připravovat pro návštěvníky přibližně ve věku 30–50 let a zasadit je do českých reálií. Po správné volbě zobrazit krátkou pochvalu, po jiné volbě nápovědu a po každé odpovědi vysvětlení; vysvětlení musí být dostupné i bez odpovědi.
+- Ukázka e-mailu obsahuje dva neškodné pokusy ovlivnit shrnutí: bílý text na bílém pozadí a pokyn ve španělsky psaném odstavci. Skrytý text musí jít zpřístupnit i klávesnicí, dotykem a čtečkou; nejde o práci se skutečným asistentem.
+- Doplnit také vizuální úlohu s více generovanými podobami a jednou skutečnou fotografií. Před použitím fotografií doložit jejich původ a práva; u skutečné osoby také odpovídající souhlas. Výsledek vizuální úlohy nepovažovat za univerzální schopnost rozpoznávání podvrhů.
 
 ## Návrh prvních ukázek
 
@@ -59,6 +62,17 @@ Výběr dosud **není potvrzený**. Scénáře níže jsou ilustrativní návrhy
 | Neznámý pokyn v dokumentu | 2 min | Bezpečná simulace shrnutí dokumentu s cizím požadavkem; text dokumentu není automaticky pokyn uživatele. Nepoužít funkční škodlivý prompt. | [OWASP: Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/). |
 
 Pro vizuální ukázku je podmínkou vlastní nebo řádně licencované médium se spolehlivě doloženým původem a bez použití podoby skutečné osoby bez odpovídajícího souhlasu. Není-li k dispozici, navrženou náhradou je **Co sdílet s AI?**: ve fiktivním zadání vybrat jen nezbytné údaje a upozornit na ověření podmínek konkrétní služby, produktu a nastavení. Zdrojový kontext k ověření: [NÚKIB: Rizika využívání AI](https://osveta.nukib.gov.cz/mod/page/view.php?id=4725).
+
+### Kandidáti pro vizuální ukázku
+
+Vyhledáno 31. 10. 2026. Snímky jsou vybrány pro místní náhled; před veřejným nasazením je třeba potvrdit rozsah souhlasu a vyjasnit uvedená omezení.
+
+Uživatel 1. 11. 2026 uvedl, že má souhlas vlastníků práv, a požádal o pokračování. Konkrétní znění a rozsah souhlasu nejsou v podkladech zaznamenány; před veřejným nasazením je třeba potvrdit, že zahrnují vybrané snímky a použití podoby zachycené osoby v této úloze.
+
+- [Man 2](https://commons.wikimedia.org/wiki/File:Man_2.jpg) a [Woman 1](https://commons.wikimedia.org/wiki/File:Woman_1.jpg): podle Wikimedia Commons jde o dvě podoby vytvořené modelem StyleGAN, které nahrál Owlsmcgee v roce 2019. Commons je označuje jako `PD-algorithm`; upozorňuje však na rozdíly mezi právními řády a možná práva k odvozeným prvkům. Před veřejným nasazením ověřit právní použitelnost pro tento web.
+- [Autoportrét Nonny Ntlahla](https://commons.wikimedia.org/wiki/File:A_selfie_image_of_Nonny_Ntlahla_User_actveso.jpg): podle popisu a stránky souboru autorka pořídila a sama zveřejnila svůj snímek pod licencí [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Je nutné uvést autora, odkaz na licenci a případné úpravy; při zpracování odvozeného díla dodržet podmínku stejné licence. Stránka nedokládá zvláštní souhlas s použitím v této konkrétní úloze; uživatelem uvedený souhlas a jeho rozsah je třeba ověřit před veřejným nasazením.
+- [Autoportrét Christophera Chase-Dunna](https://commons.wikimedia.org/wiki/File:Chris_chase-dunn_self-photo.JPG): Wikimedia uvádí, že autor, který je současně zachycenou osobou, povolil publikaci pod CC BY-SA 4.0; souhlas ověřil tým Wikimedia VRT. Snímek však obsahuje také další osoby v pozadí a je vizuálně odlišný od generovaných portrétů, proto není prvním doporučením.
+- [Aitana López](https://www.theclueless.ai/project/aitana-lopez): podle stránky agentury The Clueless jde o AI vytvořenou influencerku. Na prohlédnuté stránce nebyla nalezena licence k převzetí konkrétních obrázků; bez oprávnění držitele práv je nepřebírat.
 
 ### Pracovní scénáře čtyř misí
 

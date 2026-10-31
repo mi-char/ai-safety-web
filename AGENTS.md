@@ -12,7 +12,7 @@
 
 - Vytvoř oddělenou pozvánku a přestávkový rozcestník se společnými ukázkami a zdroji. Ukázky jsou dobrovolné, mají vlastní stabilní adresy a zůstávají dostupné i po akci.
 - Vycházej z potvrzeného rozsahu; čtyři ukázky v podkladu jsou doporučením, nikoli schváleným výběrem. Další témata jsou zásobník nápadů.
-- Každá ukázka má jednoduché zadání, srozumitelné vysvětlení, praktický závěr a zdroj. Umožni změnit volbu nebo zobrazit vysvětlení i bez odpovědi. Nevytvářej skóre, žebříčky ani časové limity.
+- Každá ukázka má jednoduché zadání, srozumitelné vysvětlení, praktický závěr a zdroj. Umožni změnit volbu nebo zobrazit vysvětlení i bez odpovědi. Dobrovolný test může počítat body a zobrazit výsledek; ten není zárukou bezpečí. Nevytvářej žebříčky ani časové limity.
 - Navržené krátké mise mají části situace, volba a vysvětlení s kartou praktického kroku. Po každé volbě ukaž věcnou zpětnou vazbu bez hodnocení návštěvníka; karta je dostupná i bez odpovědi a není zárukou bezpečí. Mise i jejich označení zůstávají k potvrzení.
 - Vizuální ukázku a naléhavý telefonát označ jako ochutnávku tématu po přestávce. Před zveřejněním vizuální ukázky dolož konkrétní médium a práva; jinak použij schválenou náhradu. Z rozcestníku a telefonátu odkazuj na praktický postup při incidentu.
 - Odlišuj fiktivní scénáře, doložené případy, odborná doporučení a interpretace. Před zveřejněním ověř konkrétní tvrzení, funkčnost a aktuálnost zdrojů; uveď jejich název, instituci, URL, datum a omezení, pokud jsou známé. Nepředstírej, že zdroj ověřuje tvrzení, které nepodporuje.
@@ -21,7 +21,7 @@
 
 ## Technická a bezpečnostní pravidla
 
-- Výchozím návrhem je statický web: sémantické HTML, vlastní CSS a jen nezbytný JavaScript. Nepřidávej serverovou AI, databázi, účty ani framework bez konkrétní potřeby a dohody.
+- Web je staticky generovaný: používej sémantické HTML, vlastní CSS a klientský JavaScript pro interakce, včetně dohodnutého Preactu. Nepřidávej serverovou AI, databázi, účty ani další framework bez konkrétní potřeby a dohody.
 - Soubory a složky webu i slugy adres pojmenovávej anglicky; návštěvnický obsah ponech česky.
 - Odpovědi a stav mise drž pouze v paměti zobrazené stránky, nikam je neodesílej ani neukládej. Nepoužívej volná pole na odpovědi ani nahrávání souborů. Nepřidávej vlastní analytiku, měřicí pixely, externí fonty ani vložené přehrávače třetích stran.
 - Externí zdroj nebo registraci otevírej až na přání návštěvníka. Informace o soukromí přizpůsob skutečnému provozovateli a hostingu; neslibuj absolutní anonymitu.

@@ -24,7 +24,7 @@ Podklady obsahují detailní plán implementace, návrhy čtyř krátkých misí
 ## Zamýšlené řešení
 
 - Statický web s oddělenou pozvánkou a přestávkovým rozcestníkem, které sdílejí ukázky a zdroje.
-- Dobrovolné krátké mise s vysvětlením a kartou praktického kroku, bez skóre, soutěžení či ukládání postupu.
+- Dobrovolné krátké mise s vysvětlením a kartou praktického kroku a samostatný bodovaný test, bez žebříčků, časového limitu či ukládání postupu.
 - Statické generování pomocí Astro, vlastní CSS a malé interaktivní komponenty v Preactu; bez účtů, databáze a serverové AI.
 - Přístupné ovládání, použitelnost na telefonu a dostupný obsah i bez JavaScriptu.
 - Odpovědi návštěvníků zpracovávat pouze v prohlížeči, bez ukládání a odesílání.
