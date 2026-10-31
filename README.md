@@ -37,3 +37,7 @@ Konkrétní stránky, ukázky, zdroje, média a údaje o akci vzniknou až při 
 Ve složce `web/` spusťte `npm install` a následně `npm run dev`. Produkční statické soubory vzniknou příkazem `npm run build` ve složce `web/dist/`; `npm run preview` spustí jejich místní náhled. Pro ověření umístění v podadresáři lze při sestavení nastavit proměnnou `SITE_BASE`, například na `/ai-safety-web/`.
 
 Testovací obsah včetně náhradní ukázky není schválený k publikaci. Před zveřejněním je nutné potvrdit výběr ukázek, údaje, zdroje, případná média a provozovatele a provést kontroly uvedené v podkladech.
+
+## Publikace na GitHub Pages
+
+Workflow `.github/workflows/deploy.yml` sestaví obsah složky `web/` pro adresu nastavenou v GitHub Pages. Spouští se výhradně ručně z karty Actions; samotný push web nezveřejní. Před jeho spuštěním je nutné potvrdit obsah, provést kontroly před zveřejněním a odsouhlasit nasazení. Aby bylo workflow v GitHubu dostupné, musí být nejprve součástí výchozí větve repozitáře.
