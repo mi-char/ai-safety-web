@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ChoicePanel from '../../../components/ChoicePanel';
+import { examples, type Example } from '../../../data/examples';
+import { pathTo } from '../../../utils/paths';
+
+export function getStaticPaths() {
+  return examples.map((example) => ({ params: { slug: example.slug }, props: { example } }));
+}
+
+const { example } = Astro.props as { example: Example };
+---
+<BaseLayout title={example.title} section="break">
+  <div class="wrap example-layout">
+    <div class="example-main">
+      <a class="back-link" href={pathTo('break/')}>← Všechny ukázky</a>
+      <div class="example-meta"><span>{example.category}</span><span>{example.duration}</span><span>Fiktivní situace</span></div>
+      <h1>{example.title}{!example.title.endsWith('?') && <span class="title-dot">.</span>}</h1>
+      {example.preview && <p class="preview-label">OCHUTNÁVKA TÉMATU PO PŘESTÁVCE</p>}
+      {example.draftReplacement && <p class="preview-label">PRACOVNÍ NÁVRH NÁHRADY K POTVRZENÍ</p>}
+      <section class="situation" aria-labelledby="situation-title"><div class="step-label">01 / SITUACE</div><h2 id="situation-title">Představte si…</h2><p>{example.situation}</p></section>
+      <section class="choice-section" aria-labelledby="choice-title"><div class="step-label">02 / VAŠE VOLBA</div><h2 id="choice-title">Jak byste se rozhodli?</h2><ChoicePanel question={example.question} options={example.options} client:load /></section>
+      <section class="explanation" aria-labelledby="explanation-title"><div class="step-label">03 / VYSVĚTLENÍ</div><h2 id="explanation-title">Co si z toho odnést?</h2><p>{example.explanation}</p></section>
+      <div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>
+      {example.slug === 'urgent-phone-call' && <p class="incident-link">Došlo už k platbě nebo předání bankovních údajů? <a href={pathTo('incident/')}>Podívejte se na postup při incidentu ↗</a></p>}
+      <section class="example-sources" aria-labelledby="sources-title"><div class="step-label">ZDROJE K OVĚŘENÍ</div><h2 id="sources-title">Kam dál</h2>{example.sources.map((source) => <p><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small></p>)}</section>
+      <a class="text-link" href={pathTo('break/')}>← Zpět na všechny ukázky</a>
+    </div>
+    <aside class="example-aside"><span>UKÁZKA</span><strong>{example.number}<span>.</span></strong><p>Krátká situace pro vlastní zamyšlení.</p></aside>
+  </div>
+</BaseLayout>

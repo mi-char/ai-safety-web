@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { pathTo } from '../utils/paths';
+
+interface Props {
+  title: string;
+  section?: string;
+}
+
+const { title, section = '' } = Astro.props;
+---
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pracovní náhled webu k přednášce o bezpečnosti AI." />
+    <title>{title} | Bezpečnost AI</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Přeskočit na obsah</a>
+    <div class="draft-bar"><div class="wrap">Pracovní náhled <span aria-hidden="true">/</span> Obsah a výběr ukázek čekají na potvrzení</div></div>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href={pathTo()} aria-label="Bezpečnost AI, úvodní stránka"><span class="brand-mark">ai<span>.</span></span><span>BEZPEČNOST<br />AI</span></a>
+        <nav class="main-nav" aria-label="Hlavní navigace">
+          <a href={pathTo()} aria-current={section === 'home' ? 'page' : undefined}>Přednáška</a>
+          <a href={pathTo('break/')} aria-current={section === 'break' ? 'page' : undefined}>Ukázky</a>
+          <a href={pathTo('resources/')} aria-current={section === 'resources' ? 'page' : undefined}>Zdroje</a>
+        </nav>
+      </div>
+    </header>
+    <main id="content"><slot /></main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div><div class="footer-title">Bezpečnost AI<span>.</span></div><p>Pro život i práci s větším nadhledem.</p></div>
+        <div class="footer-links"><a href={pathTo('break/')}>Ukázky</a><a href={pathTo('incident/')}>Když se něco stane</a><a href={pathTo('resources/')}>Zdroje a soukromí</a></div>
+      </div>
+      <div class="wrap footer-bottom">PRACOVNÍ NÁHLED <span>Obsah před zveřejněním vyžaduje ověření.</span></div>
+    </footer>
+  </body>
+</html>

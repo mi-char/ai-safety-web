@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sources } from '../../data/examples';
+import { pathTo } from '../../utils/paths';
+---
+<BaseLayout title="Postup při incidentu">
+  <div class="wrap article-layout"><a class="back-link" href={pathTo('break/')}>← Zpět na ukázky</a><div class="eyebrow"><span class="dot"></span> PRAKTICKÝ POSTUP</div><h1>Když se něco<br /><em>stane.</em></h1><p class="article-lead">Pokud máte podezření na podvod nebo nechtěné sdílení údajů, soustřeďte se na nejbližší krok. Konkrétní postup závisí na situaci.</p>
+    <div class="notice">Tento postup je pracovní návrh k ověření. Není zárukou vrácení peněz ani odstranění následků.</div>
+    <ol class="incident-steps">
+      <li><div><h2>Zastavte další předávání</h2><p>Odložte další platbu nebo předávání údajů. Požadavek ověřte přes dříve známý kontakt.</p></div></li>
+      <li><div><h2>Kontaktujte banku</h2><p>Po podezřelé platbě nebo předání bankovních údajů ihned kontaktujte banku přes ověřené číslo a řiďte se jejími pokyny.</p></div></li>
+      <li><div><h2>Zabezpečte účet</h2><p>Při ohrožení účtu použijte ověřenou cestu k poskytovateli, změňte heslo a podle jeho pokynů zkontrolujte přihlášení.</p></div></li>
+      <li><div><h2>Uchovejte informace</h2><p>Uschovejte zprávy a potvrzení pro banku, poskytovatele nebo policii. Nikomu neposílejte hesla ani ověřovací kódy.</p></div></li>
+      <li><div><h2>Zapojte správné lidi</h2><p>Ve firmě kontaktujte určeného správce. Podle situace se obraťte na policii; při bezprostředním nebezpečí využijte tísňovou linku.</p></div></li>
+    </ol>
+    <div class="article-source"><span class="step-label">ZDROJOVÝ KONTEXT K OVĚŘENÍ</span><p><a href={sources.incident.url}>{sources.incident.organization}: {sources.incident.name} ↗</a></p><p><a href={sources.police.url}>{sources.police.organization}: {sources.police.name} ↗</a></p></div>
+  </div>
+</BaseLayout>

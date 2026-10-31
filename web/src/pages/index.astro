@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ExampleCard from '../components/ExampleCard.astro';
+import { examples } from '../data/examples';
+import { pathTo } from '../utils/paths';
+---
+<BaseLayout title="Přednáška" section="home">
+  <section class="intro wrap">
+    <div class="intro-kicker"><span class="dot"></span> PŘEDNÁŠKA PRO KAŽDODENNÍ ŽIVOT I PRÁCI</div>
+    <h1>Bezpečnost AI<span class="title-dot">.</span></h1>
+    <p class="intro-lead">Umělá inteligence otevírá nové možnosti. Pojďme se společně podívat, jak ji používat s rozmyslem.</p>
+    <div class="intro-bottom"><a class="button primary" href={pathTo('break/')}>Prohlédnout ukázky <span aria-hidden="true">↗</span></a><span class="intro-note">Pro veřejnost i podnikatele<br />Bez technických předpokladů</span></div>
+    <div class="intro-index" aria-hidden="true">AI <span>/</span> 01</div>
+  </section>
+  <section class="topic-band">
+    <div class="wrap topic-inner"><p>O ČEM BUDE ŘEČ</p><div><span>Soukromí a data</span><span>Ověřování informací</span><span>Podvody</span><span>AI v práci</span></div></div>
+  </section>
+  <section class="wrap section-space" aria-labelledby="intro-examples">
+    <div class="section-heading"><div><div class="eyebrow"><span class="dot"></span> KRÁTKÉ UKÁZKY</div><h2 id="intro-examples">Zkuste si to <em>po svém.</em></h2></div><div class="heading-aside"><p>Jedna situace, několik možností a praktická myšlenka, kterou si můžete odnést.</p><a class="text-link" href={pathTo('break/')}>Všechny ukázky <span aria-hidden="true">↗</span></a></div></div>
+    <div class="example-grid">{examples.slice(0, 3).map((example) => <ExampleCard example={example} />)}</div>
+  </section>
+  <section class="help-band"><div class="wrap help-inner"><div><div class="eyebrow">KDYŽ SI NEJSTE JISTÍ</div><h2>Stalo se něco<br /><em>podezřelého?</em></h2></div><div><p>První kroky při podezřelé platbě, ohrožení účtu nebo sdílení pracovních dat.</p><a class="button dark" href={pathTo('incident/')}>Přejít na postup <span aria-hidden="true">↗</span></a></div></div></section>
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import type { Example } from '../data/examples';
+import { pathTo } from '../utils/paths';
+interface Props { example: Example; }
+const { example } = Astro.props;
+---
+<article class="example-card">
+  <div class="card-top"><span class="card-number">{example.number}</span><span class="card-category">{example.category}</span><span class="card-time">{example.duration}</span></div>
+  <h3><a href={pathTo(`examples/${example.slug}/`)}>{example.title}<span aria-hidden="true">↗</span></a></h3>
+  <p>{example.description}</p>
+  <div class="card-bottom">{example.preview ? 'OCHUTNÁVKA PO PŘESTÁVCE' : example.draftReplacement ? 'NÁHRADNÍ NÁVRH K POTVRZENÍ' : 'FIKTIVNÍ SITUACE'}</div>
+</article>
