@@ -8,7 +8,13 @@ Tento soubor je samostatným pracovním plánem webového projektu. Další změ
 
 ## Revize úloh 1. 11. 2026
 
-Uživatel schválil realizaci navržených obsahových změn a přidání tématu „Stačí začernit jméno?“. Tento pokyn není souhlasem s veřejným nasazením ani potvrzením provozních údajů nebo práv k médiím. Starší návrhy čtyř misí níže zůstávají historickým podkladem; aktuální realizovaný rozsah je následující.
+### Souhlas s publikací
+
+Uživatel 1. 11. 2026 výslovně požádal o commit, push a deployment. Následně potvrdil, že jeho oprávnění pokrývají veřejné použití všech současných portrétů a upraveného videa včetně podoby zachycených osob; jde o jeho potvrzení, nikoli nezávislé právní posouzení. Jako veřejného provozovatele uvedl `mi-char`. GitHub Pages API potvrzuje hosting repozitáře `mi-char/ai-safety-web`, ruční workflow a adresu https://mi-char.github.io/ai-safety-web/. Údaje o akci a odkazy na registraci ověřeny podle Dnů AI a GoOut 1. 11. 2026. Ověřeny limity a zásady soukromí GitHub Pages; web je statický vzdělávací doprovod bez transakcí a bez sběru odpovědí, registrace probíhá až po kliknutí mimo tento web. Plný audit přístupnosti ani načtení QR kódu z projekce tím nejsou potvrzeny.
+
+Dodatečná kontrola zdrojů před publikací 1. 11. 2026 uzavřela dřívější omezení automatického načtení: oficiální české znění GDPR načteno přes Chromium a zkontrolován bod odůvodnění 26; PDF NIST načteno a zkontrolovány části RS.MA-02, RS.AN-06/07, RS.CO a RS.MI-01. Podporují identifikovatelnost i po pseudonymizaci, vyhodnocení hlášení, uchování podkladů, koordinaci a omezení následků; nejde o právní posouzení dokumentu ani garanci smazání dat konkrétní službou. Znovu ověřeny stránky Policie ČR, FTC a OWASP a doplněna data publikace a ověření. Historické poznámky o nedoloženém souhlasu a neúspěšném načtení níže popisují stav před tímto potvrzením.
+
+Uživatel nejprve schválil realizaci navržených obsahových změn a přidání tématu „Stačí začernit jméno?“. Tento původní pokyn se týkal pouze realizace; následný souhlas s publikací a médii je zaznamenán výše. Starší návrhy čtyř misí níže zůstávají historickým podkladem; aktuální realizovaný rozsah je následující.
 
 - Deset samostatných ukázek: telefonát, ověřování odpovědi AI, cizí pokyn v dokumentu, minimum sdílených dat, dvojjazyčný e-mail, portréty, video, oprávnění asistenta, reakce po sdílení dat a začernění jména. Přímé adresy původních ukázek zůstávají stejné.
 - Test má sedm odlišných scénářů zaměřených na praktické rozhodování. Neopakuje stejné volby z ukázek. Portréty a video jsou nebodované odhady; e-mail je rozšířené procvičování cizích pokynů mimo test.

@@ -43,19 +43,19 @@ export const sources = {
     name: 'Umělá inteligence a prevence podvodů',
     organization: 'Policie České republiky',
     url: 'https://policie.gov.cz/kyberkriminalita/umela-inteligence-a-prevence-podvodu',
-    detail: 'Zdrojový kontext k ověřování požadavků; datum vydání a konkrétní použití je třeba ověřit.',
+    detail: 'Publikováno 1. 7. 2026. Ověřeno 1. 11. 2026: doporučení nezávisle ověřit požadavek přes známé číslo či oficiální kontakt a nespoléhat na vzhled či hlas.',
   },
   ftc: {
     name: 'Scammers use AI to enhance their family emergency schemes',
     organization: 'Federal Trade Commission',
     url: 'https://consumer.ftc.gov/consumer-alerts/2023/03/scammers-use-ai-enhance-their-family-emergency-schemes',
-    detail: 'Březen 2023, anglicky. Doporučení zavolat dotyčnému na dříve známé číslo; převod a aktuálnost ověřit.',
+    detail: 'Alvaro Puig, 20. 3. 2023, anglicky. Ověřeno 1. 11. 2026: zavolat na známé číslo; při nedostupnosti kontaktovat dalšího člena rodiny či přátele. Americké kontakty pro hlášení nejsou určeny pro české incidenty.',
   },
   owasp: {
     name: 'LLM01: Prompt Injection',
     organization: 'OWASP',
     url: 'https://genai.owasp.org/llmrisk/llm01-prompt-injection/',
-    detail: 'Zdrojový kontext k cizím pokynům v obsahu; konkrétní použití a aktuálnost ověřit.',
+    detail: 'Verze 2025, anglicky. Ověřeno 1. 11. 2026: cizí pokyny ve zdrojích, oddělení podkladů, omezení oprávnění a schvalování rizikových akcí. Ochranné instrukce nejsou zárukou prevence.',
   },
   nukib: {
     name: 'Rizika spojená s využíváním umělé inteligence',
@@ -71,18 +71,18 @@ export const sources = {
   privacy: {
     name: 'Obecné nařízení o ochraně osobních údajů, článek 4 a bod odůvodnění 26', organization: 'Evropská unie',
     url: 'https://eur-lex.europa.eu/legal-content/CS/TXT/?uri=CELEX:32016R0679',
-    detail: 'Nařízení (EU) 2016/679 z 27. 4. 2016. Osoba může být identifikovatelná i nepřímo; odstranění jména není samo o sobě anonymizací. Konkrétní dokument vyžaduje samostatné posouzení. Automatické načtení znění 1. 11. 2026 nebylo úspěšné; před zveřejněním ověřit uvedené části.',
+    detail: 'Nařízení (EU) 2016/679 z 27. 4. 2016. Znění načteno a bod odůvodnění 26 ověřen 1. 11. 2026: identifikace může být nepřímá a pseudonymizované údaje mohou zůstat osobními. Konkrétní dokument vyžaduje samostatné posouzení; nejde o právní posudek.',
   },
   response: {
     name: 'Incident Response Recommendations and Considerations, SP 800-61 Rev. 3', organization: 'NIST',
     url: 'https://csrc.nist.gov/pubs/sp/800/61/r3/final',
-    detail: 'Duben 2025, anglicky. Rámec reakce na incidenty v organizacích; nejde o postup konkrétní AI služby. Dostupnost a vydání ověřeny 1. 11. 2026; postup přizpůsobte interním pravidlům a poskytovateli.',
+    detail: 'Duben 2025, anglicky. PDF ověřeno 1. 11. 2026: RS.MA-02 (vyhodnocení hlášení), RS.AN-06/07 (záznamy a podklady), RS.CO (komunikace) a RS.MI-01 (omezení následků). Rámec pro organizace, nikoli postup konkrétní AI služby; řiďte se interními pravidly a poskytovatelem.',
   },
   incident: {
     name: 'Než půjdete na policii',
     organization: 'Policie České republiky',
     url: 'https://policie.gov.cz/kyberkriminalita/nez-pujdete-na-policii',
-    detail: 'Zdrojový kontext k postupu po incidentu; datum vydání a konkrétní doporučení ověřit.',
+    detail: 'Publikováno 17. 6. 2026. Ověřeno 1. 11. 2026: uchování důkazů, záznam času a použitých služeb, včasný kontakt s bankou, omezení dalších škod a oznámení policii.',
   },
   generatedWoman: {
     name: 'Woman 1',
