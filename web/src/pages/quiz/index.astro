@@ -4,6 +4,6 @@ import Quiz from '../../components/Quiz';
 import { examples } from '../../data/examples';
 import { pathTo } from '../../utils/paths';
 ---
-<BaseLayout title="Krátký test" section="break">
+<BaseLayout title="Krátký test" section="break" description="Dobrovolný test s několika situacemi z běžného života a práce. Odpovědi se nikam neukládají.">
   <div class="wrap article-layout"><a class="back-link" href={pathTo('break/')}>← Zpět na ukázky</a><div class="eyebrow"><span class="dot"></span> DOBROVOLNÝ TEST</div><h1>Vyzkoušejte<br /><em>svůj úsudek.</em></h1><p class="article-lead">Krátké situace z běžného života a práce. Odpovědi i body zůstávají pouze v paměti této stránky.</p><Quiz examples={examples} basePath={pathTo()} client:load /></div>
 </BaseLayout>

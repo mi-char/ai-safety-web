@@ -14,7 +14,6 @@ export interface Example {
   description: string;
   duration: string;
   preview?: boolean;
-  draftReplacement?: boolean;
   situation: string;
   prompt?: string;
   question: string;
@@ -179,8 +178,8 @@ export const examples: Example[] = [
   {
     slug: 'sharing-with-ai', number: '04', category: 'Práce a data',
     title: 'Co sdílet s AI?',
-    description: 'Pracovní návrh náhradní ukázky o tom, jak přemýšlet o sdílených údajích.',
-    duration: '2 min', draftReplacement: true,
+    description: '    Jak přemýšlet o údajích, které vkládáte do AI asistenta.',
+        duration: '2 min',
     situation: 'V malém knihkupectví chystáte pozvánku na autorské čtení. Chcete pomoci s obecným textem a uvažujete, zda asistentovi vložit celý seznam zákazníků.',
     prompt: 'Napiš stručnou a přátelskou pozvánku na autorské čtení v místním knihkupectví.',
     activity: {

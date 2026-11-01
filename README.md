@@ -8,11 +8,11 @@ Tento repozitář obsahuje podklady a plán připravovaného webu k přednášce
 
 This repository contains the materials and implementation plan for a website accompanying a public talk on AI safety, intended for a general, non-technical audience. The website is planned to provide an event invitation, optional short interactive examples during the break, and practical resources available after the event.
 
-An initial local prototype is available in `web/`. Its content and scope are still subject to confirmation and it is not ready for publication.
+The website is in `web/`. Before publication, the selection of examples, event details, sources, media and the operator must be confirmed.
 
 ## Stav
 
-Projekt obsahuje první lokální testovací verzi webu. Obsah a rozsah realizace podléhají potvrzení; nezveřejňovat neověřené údaje o akci ani smyšlené registrační odkazy.
+Webový projekt je ve složce `web/`. Před zveřejněním je nutné potvrdit výběr ukázek, údaje o akci, zdroje, média a provozovatele; nezveřejňovat neověřené údaje ani smyšlené registrační odkazy.
 
 Výchozím podkladem je místní pracovní plán webu. Projekt je samostatný; k práci nepotřebuje soubory jiného projektu. Změny plánů v jiných projektech se sem nepřenášejí automaticky.
 
@@ -35,8 +35,6 @@ Konkrétní stránky, ukázky, zdroje, média a údaje o akci vzniknou až při 
 ## Lokální spuštění
 
 Ve složce `web/` spusťte `npm install` a následně `npm run dev`. Produkční statické soubory vzniknou příkazem `npm run build` ve složce `web/dist/`; `npm run preview` spustí jejich místní náhled. Pro ověření umístění v podadresáři lze při sestavení nastavit proměnnou `SITE_BASE`, například na `/ai-safety-web/`.
-
-Testovací obsah včetně náhradní ukázky není schválený k publikaci. Před zveřejněním je nutné potvrdit výběr ukázek, údaje, zdroje, případná média a provozovatele a provést kontroly uvedené v podkladech.
 
 ## Publikace na GitHub Pages
 
