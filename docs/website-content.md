@@ -2,6 +2,18 @@
 
 ## Aktuální realizace 1. 11. 2026
 
+Uživatel následně 1. 11. 2026 požádal o nasazení dokončených úprav. Tento pokyn zahrnuje potřebný commit, push a spuštění GitHub Pages; nahrazuje předchozí omezení publikace v této revizi. Ověřené údaje o akci, provozovateli a oprávnění k původním médiím zůstávají beze změny. Níže uvedené místní kontroly nezastupují kontrolu veřejných adres po nasazení ani úplný audit přístupnosti.
+
+### Následná obsahová oprava
+
+- Odstraněn dodatek o modelové odpovědi u otázky 2 a poznámka o možné AI u telefonátu. Obecné označení vzdělávacích situací zůstává pouze na rozcestníku; nejistota o skutečném původu médií a omezení zdrojů zůstávají ve vysvětlení.
+- U otázky 3 zkráceny odpovědi v tabulce i zadání výběru. Správné řádky zůstávají 4, 6 a 8; počty skutečných přání se nemění.
+- Otázka 5 obsahuje místo pozdravů požadavky na předání adresáře kontaktů a starších zpráv ze schránky. Neobsahuje příjemce, exportní funkci ani napojení na externího asistenta. Vysvětlení rozlišuje cizí požadavek a skutečná oprávnění aplikace.
+- Otázka 8 nyní řeší úpravu recenze: návštěvník vybírá mezi textem recenze a celou stránkou objednávky se zakrytým jménem, ale ponechaným e-mailem a identifikátorem. Původní adresa `/examples/redacting-a-name/` zůstává zachována.
+- Otázka 9 zobrazuje místní stránku slavnosti přímo v izolovaném iframe. Samostatný odkaz a text pro kopírování zůstávají jako doplňky, ne podmínka řešení.
+- Nové ověření: sestavení 18 stránek v kořeni i pod `/ai-safety-web/`; před úpravou výšky iframe prošel Playwright všech 32 voleb, přesnou i neúplnou a nadbytečnou odpověď ankety, skóre 7 → 6 → 7, přeskočení, návrat, reset a obnovení. Ověřeno kopírování a ruční náhrada, překlad e-mailu klávesnicí, archivní adresy a 13 stránek bez JavaScriptu. V čistém profilu nebyly zjištěny externí ani jiné než GET/HEAD požadavky, chyby JavaScriptu, cookies, Local Storage, Session Storage, IndexedDB ani Cache Storage.
+- Po vizuální kontrole byla výška iframe na mobilu zvýšena na 840 px, aby byl vidět celý podstatný text. Následně prošla samostatná kontrola rámce při 390 a 1440 px, s JavaScriptem i bez něj, včetně snímků samostatné ukázky a testu; rámec zůstává sandboxovaný, lokální a ovladatelný klávesnicí. Diagnostika změněných zdrojů nehlásí chyby. Úplný audit WCAG, pomalá síť a zvětšení textu nebyly provedeny; stav zdrojů a oprávnění k médiím se touto kontrolou nemění. Nový commit, push ani nasazení nejsou součástí této opravy.
+
 Schválená revize nahrazuje starší návrhy níže; jejich historické záznamy, ověřené zdroje, souhlasy k médiím, údaje o akci a informace o provozovateli zůstávají zachovány. Veřejné nasazení ani push nejsou součástí tohoto zadání.
 
 - Pozvánka, rozcestník a test používají stejný katalog devíti úloh: telefonát, ověření odpovědi, anketa, sdílení údajů, e-mail, portréty, video, začernění jména a stránka slavnosti. Sedm situací je bodovaných; portréty a video jsou nebodované odhady. Původní média a jejich zdroje zůstávají beze změny.
