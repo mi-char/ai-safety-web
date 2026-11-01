@@ -4,6 +4,7 @@ import EmailMessage from './EmailMessage';
 import ScenarioExplorer from './ScenarioExplorer';
 import VideoMessage from './VideoMessage';
 import VideoHistory from './VideoHistory';
+import Material from './Material';
 import type { Example } from '../data/examples';
 
 interface Props {
@@ -15,6 +16,7 @@ export default function Quiz({ examples, basePath }: Props) {
   const [ready, setReady] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => examples.map(() => null));
+  const [drafts, setDrafts] = useState<Answer[]>(() => examples.map(() => null));
   const [revealed, setRevealed] = useState<boolean[]>(() => examples.map(() => false));
   const hasNavigated = useRef(false);
 
@@ -35,7 +37,7 @@ export default function Quiz({ examples, basePath }: Props) {
       <p>Pro počítání bodů zapněte JavaScript. Zadání a vysvětlení jsou dostupná i bez něj.</p>
       {examples.map((example) => <section key={example.slug} class="quiz-fallback-item">
         <h2>{example.title}</h2><p>{example.situation}</p>
-        {example.prompt && <div class="agent-prompt"><div class="step-label">UKÁZKOVÉ ZADÁNÍ PRO ASISTENTA</div><p>{example.prompt}</p></div>}
+        <Material prompt={example.prompt} material={example.material} />
         {example.email && <EmailMessage email={example.email} />}
         {example.activity && <ScenarioExplorer activity={example.activity} />}
         {example.video && <VideoMessage video={example.video} />}
@@ -50,21 +52,23 @@ export default function Quiz({ examples, basePath }: Props) {
 
   const completed = step === examples.length;
   const answered = answers.filter((answer) => answer !== null).length;
-  const score = answers.reduce<number>((total, answer, index) => total + (isCorrectAnswer(answer, examples[index].correctOption) ? 1 : 0), 0);
+  const scoredCount = examples.filter((example) => example.assessment !== 'exploration').length;
+  const score = answers.reduce<number>((total, answer, index) => total + (examples[index].assessment !== 'exploration' && isCorrectAnswer(answer, examples[index].correctOption) ? 1 : 0), 0);
 
   if (completed) {
     return <section class="quiz-result" aria-labelledby="result-title">
       <div class="step-label">VÝSLEDEK TESTU</div>
       <h2 id="result-title" tabIndex={-1}>Vaše odpovědi<span class="title-dot">.</span></h2>
-      <div class="result-score"><strong>{score}</strong><span>z {examples.length} bodů</span></div>
+      <div class="result-score"><strong>{score}</strong><span>z {scoredCount} bodů</span></div>
+      {scoredCount !== examples.length && <p>Odhady původu portrétů a videa jsou bez bodového hodnocení.</p>}
       <p>Odpovězeno {answered} z {examples.length} otázek. Výsledek se týká jen těchto situací a není zárukou bezpečí ani univerzálním testem rozpoznání podvodů.</p>
       {revealed.some(Boolean) && <p>Otázky s vysvětlením otevřeným před odpovědí: {revealed.filter(Boolean).length}. Body zahrnují i toto procvičování; nejde o samostatně ověřenou znalost.</p>}
-      <p>{score === examples.length ? 'Ve všech situacích jste vybrali doporučený postup.' : 'U zbývajících situací si můžete projít doporučený postup a odpovědi změnit.'}</p>
-      <div class="result-list">{examples.map((example, index) => <div class={`result-item ${answers[index] === null ? '' : isCorrectAnswer(answers[index], example.correctOption) ? 'is-correct' : 'is-incorrect'}`} key={example.slug}>
-        <div><span class="step-label">{answers[index] === null ? 'BEZ ODPOVĚDI' : isCorrectAnswer(answers[index], example.correctOption) ? 'SPRÁVNÁ ODPOVĚĎ' : 'NESPRÁVNÁ ODPOVĚĎ'}</span><h3>{example.title}</h3><p>{example.action}</p>{revealed[index] && <small>Vysvětlení otevřeno před odpovědí.</small>}</div>
+      <p>{score === scoredCount ? 'Ve všech bodovaných situacích jste vybrali doporučený postup.' : 'U zbývajících situací si můžete projít doporučený postup a odpovědi změnit.'}</p>
+      <div class="result-list">{examples.map((example, index) => <div class={`result-item ${answers[index] === null || example.assessment === 'exploration' ? '' : isCorrectAnswer(answers[index], example.correctOption) ? 'is-correct' : 'is-incorrect'}`} key={example.slug}>
+        <div><span class="step-label">{answers[index] === null ? 'BEZ ODPOVĚDI' : example.assessment === 'exploration' ? 'ODHAD BEZ BODŮ' : isCorrectAnswer(answers[index], example.correctOption) ? 'SPRÁVNÁ ODPOVĚĎ' : 'NESPRÁVNÁ ODPOVĚĎ'}</span><h3>{example.title}</h3><p>{example.action}</p>{revealed[index] && <small>Vysvětlení otevřeno před odpovědí.</small>}</div>
         <button type="button" class="text-button" onClick={() => goTo(index)}>Upravit odpověď</button>
       </div>)}</div>
-      <button type="button" class="button primary" onClick={() => { setAnswers(examples.map(() => null)); setRevealed(examples.map(() => false)); goTo(0); }}>Začít znovu <span aria-hidden="true">↻</span></button>
+      <button type="button" class="button primary" onClick={() => { setAnswers(examples.map(() => null)); setDrafts(examples.map(() => null)); setRevealed(examples.map(() => false)); goTo(0); }}>Začít znovu <span aria-hidden="true">↻</span></button>
     </section>;
   }
 
@@ -72,10 +76,10 @@ export default function Quiz({ examples, basePath }: Props) {
   return <section class="quiz-step" aria-labelledby="quiz-title">
     <div class="quiz-progress"><span>OTÁZKA {step + 1} Z {examples.length}</span><span>{answered} ZODPOVĚZENO</span></div>
     <progress max={examples.length} value={step + 1} aria-label={`Otázka ${step + 1} z ${examples.length}`} />
-    <div class="example-meta"><span>{example.category}</span><span>{example.portraits ? 'Skutečné a vytvořené snímky' : example.video ? 'Video k posouzení' : 'Fiktivní situace'}</span>{example.preview && <span>Ochutnávka tématu po přestávce</span>}</div>
+    <div class="example-meta"><span>{example.category}</span>{example.preview && <span>Ochutnávka tématu po přestávce</span>}</div>
     <h2 id="quiz-title" tabIndex={-1}>{example.title}<span class="title-dot">{example.title.endsWith('?') ? '' : '.'}</span></h2>
     <p class="quiz-situation">{example.situation}</p>
-    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} multiple={example.multiple} prompt={example.prompt} email={example.email} activity={example.activity} portraits={example.portraits} video={example.video} selected={answers[step]} onSelect={(index) => setAnswers(answers.map((answer, answerIndex) => answerIndex === step ? index : answer))} />
+    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} assessment={example.assessment} multiple={example.multiple} prompt={example.prompt} material={example.material} email={example.email} activity={example.activity} portraits={example.portraits} video={example.video} selected={answers[step]} draft={drafts[step]} onDraft={(value) => setDrafts((previous) => previous.map((answer, index) => index === step ? value : answer))} onSelect={(value) => setAnswers((previous) => previous.map((answer, index) => index === step ? value : answer))} />
     <details key={example.slug} class="quiz-explanation" open={answers[step] !== null} onToggle={(event) => {
       if (event.currentTarget.open && answers[step] === null) setRevealed((previous) => previous.map((value, index) => index === step ? true : value));
     }}><summary>Vysvětlení a praktický krok</summary><p>{example.explanation}</p>{example.video && <VideoHistory video={example.video} />}<div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>{example.sources.map((source) => <p key={source.url}><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small>{source.licenseUrl && <> <a href={source.licenseUrl}>Licence CC BY-SA 4.0 ↗</a></>}</p>)}</details>

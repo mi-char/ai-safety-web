@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { festivalInstruction, festivalSections, festivalTitle } from '../../../data/festival';
+import { pathTo } from '../../../utils/paths';
+---
+<BaseLayout title={festivalTitle} description="Program sousedské slavnosti">
+  <div class="wrap festival-page">
+    <h1>{festivalTitle}</h1>
+    {festivalSections.map((section) => <section><h2>{section.title}</h2><p>{section.text}</p></section>)}
+    <p>{festivalInstruction}</p>
+    <footer><p>Součást vzdělávací ukázky Bezpečnost AI</p><a href={pathTo('examples/webpage-instruction/')}>Zpět na ukázku</a></footer>
+  </div>
+</BaseLayout>

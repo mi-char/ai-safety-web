@@ -1,5 +1,16 @@
 # Pracovní plán webu Bezpečnost AI
 
+## Aktuální realizace 1. 11. 2026
+
+Schválená revize nahrazuje starší návrhy níže; jejich historické záznamy, ověřené zdroje, souhlasy k médiím, údaje o akci a informace o provozovateli zůstávají zachovány. Veřejné nasazení ani push nejsou součástí tohoto zadání.
+
+- Pozvánka, rozcestník a test používají stejný katalog devíti úloh: telefonát, ověření odpovědi, anketa, sdílení údajů, e-mail, portréty, video, začernění jména a stránka slavnosti. Sedm situací je bodovaných; portréty a video jsou nebodované odhady. Původní média a jejich zdroje zůstávají beze změny.
+- Archivní adresy `/examples/unknown-document-instruction/`, `/examples/assistant-permissions/` a `/examples/data-already-shared/` zůstávají dostupné. Nové adresy jsou `/examples/survey-instructions/`, `/examples/webpage-instruction/` a `/samples/neighborhood-festival/`.
+- Anketa obsahuje osm přání a tři cizí pokyny; všechna skutečná přání se započítávají jednou. Náhled a stránka slavnosti sdílejí stejný obsah. Kopírovat lze zadání s absolutní adresou odvozenou z aktuálního prohlížeče nebo se samotným textem stránky; při chybě je dostupný text pro ruční výběr. Reakce externího asistenta není předem známá.
+- Všechny odpovědi se vyhodnocují až po potvrzení. Změna ruší hodnocení, návrat obnovuje rozpracovaný výběr a obnovení či nový začátek maže stav. Odpovědi se drží pouze v paměti stránky; žádné volby se neodesílají ani neukládají. Bez JavaScriptu zůstávají podklady, vysvětlení, praktický krok a zdroje čitelné.
+- Místně ověřeno: sestavení 18 stránek v kořeni a s `SITE_BASE=/ai-safety-web/`; Playwright v obou variantách prošel devět úloh, 32 jednotlivých voleb, přepočet 7 → 6 → 7, přeskočení všech otázek, návrat k výběru a reset. V podadresáři ověřil i neúplný a nadbytečný výběr ankety, prázdný odhad, zvýraznění po otevření vysvětlení a obnovení testu. Ověřeno kopírování obou podob včetně chybové větve, přímé archivní adresy, 13 stránek bez JavaScriptu a absence vodorovného přetečení při 390 a 1440 px. Snímky jsou v `.tmp/screenshots/`; český překlad e-mailu byl otevřen klávesnicí.
+- V čistém profilu nebyly při průchodu zjištěny externí požadavky, požadavky jiné než GET/HEAD, chyby JavaScriptu, cookies, Local Storage, Session Storage, IndexedDB ani Cache Storage. U ankety ověřen viditelný fokus a označení i odznačení mezerníkem. Nebyla samostatně prověřena pomalá síť, zvětšení textu ani úplný kontrast a WCAG audit. Test neměří skutečné chování externí AI ani nezaručuje bezpečnost. Před případným zveřejněním znovu ověřit aktuálnost odkazů, údajů o akci a rozsah oprávnění k médiím.
+
 **Stav:** rozpracovaný návrh, nikoli schválené zadání ani hotové texty pro zveřejnění.  
 **Původ:** část podkladů byla převzata 31. 10. 2026 z pracovního návrhu k přednášce. Zdroje ani jejich aktuálnost nebyly při převzetí znovu ověřeny.  
 **Aktualizace:** 31. 10. 2026 doplněny scénáře, incidentní postup, kontrolní podmínky a podrobnější katalog dalších témat.
