@@ -15,5 +15,6 @@ export default function EmailMessage({ email }: Props) {
       <p>{email.signoff}</p>
     </div>
     <details class="email-reveal"><summary>Zobrazit e-mail jako prostý text</summary><p>{email.greeting}</p><p>{email.body}</p><p>{email.hiddenText}</p><p lang="es">{email.spanishText}</p><p>{email.signoff}</p></details>
+    {email.translation && <details class="email-reveal"><summary>Český překlad španělského odstavce</summary><p>{email.translation}</p></details>}
   </div>;
 }

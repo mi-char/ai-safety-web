@@ -6,6 +6,23 @@
 
 Tento soubor je samostatným pracovním plánem webového projektu. Další změny webového zadání zaznamenávat zde; nejsou automaticky synchronizovány s žádným jiným projektem. Případný rozpor s novým zadáním uživatele vyjasnit před realizací.
 
+## Revize úloh 1. 11. 2026
+
+Uživatel schválil realizaci navržených obsahových změn a přidání tématu „Stačí začernit jméno?“. Tento pokyn není souhlasem s veřejným nasazením ani potvrzením provozních údajů nebo práv k médiím. Starší návrhy čtyř misí níže zůstávají historickým podkladem; aktuální realizovaný rozsah je následující.
+
+- Deset samostatných ukázek: telefonát, ověřování odpovědi AI, cizí pokyn v dokumentu, minimum sdílených dat, dvojjazyčný e-mail, portréty, video, oprávnění asistenta, reakce po sdílení dat a začernění jména. Přímé adresy původních ukázek zůstávají stejné.
+- Test má sedm odlišných scénářů zaměřených na praktické rozhodování. Neopakuje stejné volby z ukázek. Portréty a video jsou nebodované odhady; e-mail je rozšířené procvičování cizích pokynů mimo test.
+- Ověřování odpovědi se přesouvá od rozpoznávání hlasu k porovnání tvrzení s konkrétním výňatkem NÚKIB. Výňatek je podklad k úkolu; vlastní vysvětlení lze otevřít bez odpovědi.
+- Výběr nezbytných dat je hlavní úkol s více správnými možnostmi. Hodnocení se ukáže až po potvrzení, po změně výběru se zruší a skóre testu se přepočítá. Částečný výběr nezískává bod; neodpovězený stav zůstává neutrální.
+- Test eviduje pouze v paměti stránky otevření vysvětlení před odpovědí a označuje takové výsledky jako procvičování, ne samostatně ověřenou znalost. Obnovení stránky nebo nový začátek stav smaže.
+- Dvojjazyčný e-mail má český překlad dostupný klávesnicí i bez JavaScriptu. Otázka ověřuje obsah očekávaného shrnutí, nikoli znalost španělštiny nebo počet nalezených pokynů.
+- Nové adresy: `/examples/assistant-permissions/`, `/examples/data-already-shared/`, `/examples/redacting-a-name/`. Všechny nové situace jsou fiktivní, bez skutečných identifikujících hodnot a bez nahrávání dokumentů.
+- Začernění jména není vydáváno za anonymizaci. Vysvětlení rozlišuje zbývající identifikující údaje, možnost propojení, pseudonymizaci a skutečné odstranění údajů oproti vizuálnímu překrytí. Pro obecný návrh doporučuje obecné zadání místo osobního dokumentu; minimum dat samo nepovoluje použití libovolné služby.
+
+Zdrojová kontrola: 1. 11. 2026 načteny relevantní části NÚKIB a OWASP Excessive Agency; doplněny datum kontroly, rozsah a omezení. U NIST SP 800-61 Rev. 3 ověřena publikační stránka a vydání v dubnu 2025, nikoli celé PDF. K tématu anonymizace připojen článek 4 a bod odůvodnění 26 GDPR na EUR-Lex; automatické načtení celého znění nebylo úspěšné. Detailní kontrola těchto dvou podkladů a konkrétních incidentních doporučení zůstává podmínkou před zveřejněním. Práva k existujícím médiím nejsou touto revizí znovu potvrzena. Délka testu a srozumitelnost s cílovými návštěvníky dosud nebyly změřeny.
+
+Technická kontrola 1. 11. 2026: sestavení 15 stránek v kořeni i pro `/ai-safety/`, diagnostika editoru bez chyb. Cílený Playwright průchod v obou variantách ověřil 31 jednotlivých voleb deseti ukázek, správný vícečetný výběr, zrušení hodnocení po změně, přepočet skóre 7 → 6 → 7, přeskočení všech otázek, reset a evidenci předem otevřeného vysvětlení. Bez JavaScriptu načteny obě vstupní stránky, test a deset přímých adres ukázek; vysvětlení, praktický krok a zdroje zůstaly dostupné. Ověřen český překlad klávesnicí a přetékání vstupních stránek, testu a nové úlohy na šířkách 390 a 1440 px; snímky nové úlohy zkontrolovány. V čistém profilu při průchodu nebyly zjištěny cookies, Local Storage, Session Storage, IndexedDB, externí požadavky ani chyby JavaScriptu. Pomocný nástroj a snímky jsou pouze v `.tmp/`. Nejde o úplný audit WCAG; pomalá síť, zvětšení textu, podrobný kontrast a cache nebyly v této revizi zvlášť prověřeny. Hosting a veřejné adresy nejsou tímto místním ověřením potvrzeny.
+
 ## Účel a publikum
 
 Jeden veřejný web má před akcí představit přednášku, o přestávce nabídnout krátké dobrovolné ukázky a po akci ponechat ukázky a praktické zdroje dostupné. Dobrovolný bodovaný test se týká pouze konkrétních situací a není detektorem podvodů ani zárukou bezpečí; web nevyžaduje účet, instalaci ani zadávání osobních nebo firemních údajů.

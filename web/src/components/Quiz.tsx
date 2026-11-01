@@ -15,6 +15,7 @@ export default function Quiz({ examples, basePath }: Props) {
   const [ready, setReady] = useState(false);
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => examples.map(() => null));
+  const [revealed, setRevealed] = useState<boolean[]>(() => examples.map(() => false));
   const hasNavigated = useRef(false);
 
   useEffect(() => setReady(true), []);
@@ -57,12 +58,13 @@ export default function Quiz({ examples, basePath }: Props) {
       <h2 id="result-title" tabIndex={-1}>Vaše odpovědi<span class="title-dot">.</span></h2>
       <div class="result-score"><strong>{score}</strong><span>z {examples.length} bodů</span></div>
       <p>Odpovězeno {answered} z {examples.length} otázek. Výsledek se týká jen těchto situací a není zárukou bezpečí ani univerzálním testem rozpoznání podvodů.</p>
+      {revealed.some(Boolean) && <p>Otázky s vysvětlením otevřeným před odpovědí: {revealed.filter(Boolean).length}. Body zahrnují i toto procvičování; nejde o samostatně ověřenou znalost.</p>}
       <p>{score === examples.length ? 'Ve všech situacích jste vybrali doporučený postup.' : 'U zbývajících situací si můžete projít doporučený postup a odpovědi změnit.'}</p>
       <div class="result-list">{examples.map((example, index) => <div class={`result-item ${answers[index] === null ? '' : isCorrectAnswer(answers[index], example.correctOption) ? 'is-correct' : 'is-incorrect'}`} key={example.slug}>
-        <div><span class="step-label">{answers[index] === null ? 'BEZ ODPOVĚDI' : isCorrectAnswer(answers[index], example.correctOption) ? 'SPRÁVNÁ ODPOVĚĎ' : 'NESPRÁVNÁ ODPOVĚĎ'}</span><h3>{example.title}</h3><p>{example.action}</p></div>
+        <div><span class="step-label">{answers[index] === null ? 'BEZ ODPOVĚDI' : isCorrectAnswer(answers[index], example.correctOption) ? 'SPRÁVNÁ ODPOVĚĎ' : 'NESPRÁVNÁ ODPOVĚĎ'}</span><h3>{example.title}</h3><p>{example.action}</p>{revealed[index] && <small>Vysvětlení otevřeno před odpovědí.</small>}</div>
         <button type="button" class="text-button" onClick={() => goTo(index)}>Upravit odpověď</button>
       </div>)}</div>
-      <button type="button" class="button primary" onClick={() => { setAnswers(examples.map(() => null)); goTo(0); }}>Začít znovu <span aria-hidden="true">↻</span></button>
+      <button type="button" class="button primary" onClick={() => { setAnswers(examples.map(() => null)); setRevealed(examples.map(() => false)); goTo(0); }}>Začít znovu <span aria-hidden="true">↻</span></button>
     </section>;
   }
 
@@ -73,8 +75,10 @@ export default function Quiz({ examples, basePath }: Props) {
     <div class="example-meta"><span>{example.category}</span><span>{example.portraits ? 'Skutečné a vytvořené snímky' : example.video ? 'Video k posouzení' : 'Fiktivní situace'}</span>{example.preview && <span>Ochutnávka tématu po přestávce</span>}</div>
     <h2 id="quiz-title" tabIndex={-1}>{example.title}<span class="title-dot">{example.title.endsWith('?') ? '' : '.'}</span></h2>
     <p class="quiz-situation">{example.situation}</p>
-    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} prompt={example.prompt} email={example.email} activity={example.activity} portraits={example.portraits} video={example.video} selected={answers[step]} showAnswerStatus onSelect={(index) => setAnswers(answers.map((answer, answerIndex) => answerIndex === step ? index : answer))} />
-    <details class="quiz-explanation" open={answers[step] !== null}><summary>Vysvětlení a praktický krok</summary><p>{example.explanation}</p>{example.video && <VideoHistory video={example.video} />}<div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>{example.sources.map((source) => <p key={source.url}><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small>{source.licenseUrl && <> <a href={source.licenseUrl}>Licence CC BY-SA 4.0 ↗</a></>}</p>)}</details>
+    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} multiple={example.multiple} prompt={example.prompt} email={example.email} activity={example.activity} portraits={example.portraits} video={example.video} selected={answers[step]} onSelect={(index) => setAnswers(answers.map((answer, answerIndex) => answerIndex === step ? index : answer))} />
+    <details key={example.slug} class="quiz-explanation" open={answers[step] !== null} onToggle={(event) => {
+      if (event.currentTarget.open && answers[step] === null) setRevealed((previous) => previous.map((value, index) => index === step ? true : value));
+    }}><summary>Vysvětlení a praktický krok</summary><p>{example.explanation}</p>{example.video && <VideoHistory video={example.video} />}<div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>{example.sources.map((source) => <p key={source.url}><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small>{source.licenseUrl && <> <a href={source.licenseUrl}>Licence CC BY-SA 4.0 ↗</a></>}</p>)}</details>
     <div class="quiz-controls"><button type="button" class="button secondary" disabled={step === 0} onClick={() => goTo(step - 1)}>← Zpět</button><button type="button" class="button primary" onClick={() => goTo(step + 1)}>{step === examples.length - 1 ? 'Zobrazit výsledek' : answers[step] === null ? 'Přeskočit' : 'Další otázka'} <span aria-hidden="true">→</span></button></div>
   </section>;
 }
