@@ -7,6 +7,7 @@
 - Potvrď výběr ukázek, údaje o akci, registraci, média a provozovatele před jejich zveřejněním. Nevymýšlej datum, cenu, kontakty, adresy ani jiné neznámé údaje. Zachovávej označení návrhů a nejistot.
 - Web a jeho podklady udržuj v tomto repozitáři. Bez příslušného pokynu neupravuj jiné projekty; tento plán se s nimi automaticky nesynchronizuje.
 - Nepřepisuj existující uživatelské změny a bez výslovného pokynu neprováděj commit ani veřejné nasazení.
+- Potřebné balíčky Pythonu instaluj a spouštěj ve virtuálním prostředí `.venv/` v kořeni repozitáře. Další pomocné nástroje instaluj do `.tmp/` v kořeni repozitáře, nikoli do systémové dočasné složky ani globálně. Projektové závislosti spravuj běžným způsobem podle jejich manifestů.
 
 ## Obsah a zdroje
 
