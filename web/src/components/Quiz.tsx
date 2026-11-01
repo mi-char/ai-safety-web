@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import ChoicePanel, { isCorrectAnswer, type Answer } from './ChoicePanel';
 import EmailMessage from './EmailMessage';
 import ScenarioExplorer from './ScenarioExplorer';
+import VideoMessage from './VideoMessage';
+import VideoHistory from './VideoHistory';
 import type { Example } from '../data/examples';
 
 interface Props {
@@ -35,10 +37,11 @@ export default function Quiz({ examples, basePath }: Props) {
         {example.prompt && <div class="agent-prompt"><div class="step-label">UKÁZKOVÉ ZADÁNÍ PRO ASISTENTA</div><p>{example.prompt}</p></div>}
         {example.email && <EmailMessage email={example.email} />}
         {example.activity && <ScenarioExplorer activity={example.activity} />}
+        {example.video && <VideoMessage video={example.video} />}
         {example.portraits && <div class="portrait-grid">{example.portraits.map((portrait, index) => <figure class="portrait-fallback" key={portrait.src}><img src={`${basePath}${portrait.src}`} alt={portrait.alt} width={portrait.width} height={portrait.height} loading="lazy" /><figcaption>Portrét {String.fromCharCode(65 + index)}</figcaption></figure>)}</div>}
         <p><strong>{example.question}</strong></p>
         <ul>{example.options.map((option) => <li key={option.label}>{option.label}</li>)}</ul>
-        <h3>Vysvětlení</h3><p>{example.explanation}</p><p><strong>Praktický krok:</strong> {example.action}</p>
+        <h3>Vysvětlení</h3><p>{example.explanation}</p>{example.video && <VideoHistory video={example.video} />}<p><strong>Praktický krok:</strong> {example.action}</p>
         <p><a href={`${basePath}examples/${example.slug}/`}>Otevřít ukázku a zdroje ↗</a></p>
       </section>)}
     </div>;
@@ -67,11 +70,11 @@ export default function Quiz({ examples, basePath }: Props) {
   return <section class="quiz-step" aria-labelledby="quiz-title">
     <div class="quiz-progress"><span>OTÁZKA {step + 1} Z {examples.length}</span><span>{answered} ZODPOVĚZENO</span></div>
     <progress max={examples.length} value={step + 1} aria-label={`Otázka ${step + 1} z ${examples.length}`} />
-    <div class="example-meta"><span>{example.category}</span><span>{example.portraits ? 'Skutečné a vytvořené snímky' : 'Fiktivní situace'}</span>{example.preview && <span>Ochutnávka tématu po přestávce</span>}</div>
+    <div class="example-meta"><span>{example.category}</span><span>{example.portraits ? 'Skutečné a vytvořené snímky' : example.video ? 'Video k posouzení' : 'Fiktivní situace'}</span>{example.preview && <span>Ochutnávka tématu po přestávce</span>}</div>
     <h2 id="quiz-title" tabIndex={-1}>{example.title}<span class="title-dot">{example.title.endsWith('?') ? '' : '.'}</span></h2>
     <p class="quiz-situation">{example.situation}</p>
-    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} prompt={example.prompt} email={example.email} activity={example.activity} portraits={example.portraits} selected={answers[step]} showAnswerStatus onSelect={(index) => setAnswers(answers.map((answer, answerIndex) => answerIndex === step ? index : answer))} />
-    <details class="quiz-explanation" open={answers[step] !== null}><summary>Vysvětlení a praktický krok</summary><p>{example.explanation}</p><div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>{example.sources.map((source) => <p key={source.url}><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small>{source.licenseUrl && <> <a href={source.licenseUrl}>Licence CC BY-SA 4.0 ↗</a></>}</p>)}</details>
+    <ChoicePanel key={example.slug} question={example.question} options={example.options} correctOption={example.correctOption} prompt={example.prompt} email={example.email} activity={example.activity} portraits={example.portraits} video={example.video} selected={answers[step]} showAnswerStatus onSelect={(index) => setAnswers(answers.map((answer, answerIndex) => answerIndex === step ? index : answer))} />
+    <details class="quiz-explanation" open={answers[step] !== null}><summary>Vysvětlení a praktický krok</summary><p>{example.explanation}</p>{example.video && <VideoHistory video={example.video} />}<div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{example.action}</p><small>Doporučení není zárukou bezpečí.</small></div>{example.sources.map((source) => <p key={source.url}><a href={source.url}>{source.organization}: {source.name} ↗</a><br /><small>{source.detail}</small>{source.licenseUrl && <> <a href={source.licenseUrl}>Licence CC BY-SA 4.0 ↗</a></>}</p>)}</details>
     <div class="quiz-controls"><button type="button" class="button secondary" disabled={step === 0} onClick={() => goTo(step - 1)}>← Zpět</button><button type="button" class="button primary" onClick={() => goTo(step + 1)}>{step === examples.length - 1 ? 'Zobrazit výsledek' : answers[step] === null ? 'Přeskočit' : 'Další otázka'} <span aria-hidden="true">→</span></button></div>
   </section>;
 }

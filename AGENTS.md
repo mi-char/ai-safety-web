@@ -19,6 +19,16 @@
 - Bez návodů k útokům, funkčních škodlivých promptů, phishingových šablon, aktivních podvodných odkazů a citlivých údajů. Neukazuj obavu o neveřejný výzkum jako prokázanou krádež dat.
 - Před použitím každého média dolož původ, autora, práva a licenci. U zvuku a videa připrav přepis či titulky a textovou alternativu; automaticky je nepřehrávej. Rozpoznání jedné ukázky nevydávej za spolehlivý způsob rozpoznání všech deepfake.
 
+## Vzhled a interakce
+
+- Navazuj na stávající vzhled ve `web/src/styles/global.css` a opakovaně používej společné komponenty ukázek a testu. Zachovej světlé pozadí, tmavý text, systémové písmo, výraznější nadpisy, jemné dělicí linky a střídmé zelené a červenooranžové akcenty; nepřidávej externí fonty ani nesouvisející vizuální styl.
+- Ukázky a test uspořádej přehledně: situace, případné médium či podklady, otázka s volbami, věcná zpětná vazba a rozbalitelné vysvětlení s praktickým krokem a zdroji. Doplňkové informace prezentuj ve stejném stylu jako existující úlohy, bez vnořených dekorativních karet.
+- V testu a hodnotících ukázkách označ správnou zvolenou odpověď zeleně a nesprávnou červeně, včetně odpovídající zpětné vazby. Správnost sděl také textem a nespoléhej jen na barvu; neodpovězený či nepotvrzený stav ponech neutrální a neposuzuj návštěvníka.
+- U výběru více možností umožni označení i odznačení před potvrzením. Vyhodnocení a případné body zobraz až po potvrzení; při změně volby zruš předchozí vyhodnocení a umožni nové potvrzení. Skóre po změně odpovědi přepočítej.
+- Před odpovědí nenapovídej správnou možnost formulací zadání, voleb, popisků ani textové alternativy. Alternativa má věcně popsat podstatný obsah, zůstat přístupná bez přehrání a nepředpokládat původ média. Vysvětlení a zdroje umožni otevřít i bez odpovědi.
+- U situací se zadáním pro AI ukaž krátký, srozumitelný příklad uživatelova promptu. U mediálních či historických ukázek ve vysvětlení podle potřeby nabídni kontext a odkazy k porovnání, jasně odliš skutečný záznam od vytvořeného a přiznej neověřený původ.
+- Obsah vybírej pro veřejnou přednášku: používej přiměřené, nenásilné ukázky a neodváděj pozornost zbytečně nápadnými efekty. Zachovej responzivní rozložení, dostatečně velké ovládací prvky, viditelný fokus a stabilní rozměry médií.
+
 ## Technická a bezpečnostní pravidla
 
 - Web je staticky generovaný: používej sémantické HTML, vlastní CSS a klientský JavaScript pro interakce, včetně dohodnutého Preactu. Nepřidávej serverovou AI, databázi, účty ani další framework bez konkrétní potřeby a dohody.

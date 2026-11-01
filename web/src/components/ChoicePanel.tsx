@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import EmailMessage from './EmailMessage';
 import ScenarioExplorer from './ScenarioExplorer';
+import VideoMessage from './VideoMessage';
+import VideoHistory from './VideoHistory';
 import type { Example } from '../data/examples';
 import { pathTo } from '../utils/paths';
 
@@ -18,13 +20,14 @@ interface Props {
   email?: Example['email'];
   activity?: Example['activity'];
   portraits?: Example['portraits'];
+  video?: Example['video'];
   revealExplanation?: { explanation: string; action: string };
   selected?: Answer;
   onSelect?: (answer: Answer) => void;
   showAnswerStatus?: boolean;
 }
 
-export default function ChoicePanel({ question, options, correctOption, prompt, email, activity, portraits, revealExplanation, selected: controlledSelection, onSelect, showAnswerStatus = false }: Props) {
+export default function ChoicePanel({ question, options, correctOption, prompt, email, activity, portraits, video, revealExplanation, selected: controlledSelection, onSelect, showAnswerStatus = false }: Props) {
   const [localSelection, setLocalSelection] = useState<Answer>(null);
   const [portraitSelection, setPortraitSelection] = useState<number[]>(() => Array.isArray(controlledSelection) ? controlledSelection : []);
   const [ready, setReady] = useState(false);
@@ -42,10 +45,11 @@ export default function ChoicePanel({ question, options, correctOption, prompt, 
   useEffect(() => setReady(true), []);
 
   return (
-    <div class={`choice-panel ${portraits ? 'has-portraits' : ''}`}>
+    <div class={`choice-panel ${portraits ? 'has-portraits' : ''} ${video ? 'has-video' : ''}`}>
       {prompt && <div class="agent-prompt"><div class="step-label">UKÁZKOVÉ ZADÁNÍ PRO ASISTENTA</div><p>{prompt}</p></div>}
       {email && <EmailMessage email={email} />}
       {activity && <ScenarioExplorer activity={activity} />}
+      {video && <VideoMessage video={video} />}
       <fieldset>
         <legend>{question}</legend>
         <div class={portraits ? 'portrait-grid' : 'choice-list'}>
@@ -64,9 +68,9 @@ export default function ChoicePanel({ question, options, correctOption, prompt, 
       </fieldset>
       {portraits && ready && <button type="button" class="button primary portrait-confirm" disabled={portraitSelection.length === 0 || selected !== null} onClick={() => selectAnswer(portraitSelection)}>Potvrdit odpověď</button>}
       {portraits && <details class="portrait-alternative"><summary>Textová alternativa</summary><p>Popisy portrétů nejsou důkazem jejich původu. Praktický závěr: původ obrázku a důležitá tvrzení ověřujte nezávisle na tom, jak obrázek působí.</p></details>}
-      {ready && <div class={`choice-feedback ${selected === null ? '' : correct ? 'is-correct' : 'is-incorrect'}`} aria-live="polite" aria-atomic="true">{selected !== null && <><strong>{correct ? 'Správně, dobrý postřeh!' : showAnswerStatus || portraits ? 'Nesprávná odpověď: nápověda' : 'Nápověda'}</strong><p>{feedback}</p></>}</div>}
+      {ready && <div class={`choice-feedback ${selected === null ? '' : correct ? 'is-correct' : 'is-incorrect'}`} aria-live="polite" aria-atomic="true">{selected !== null && <><strong>{correct ? 'Správně, dobrý postřeh!' : showAnswerStatus || portraits || video ? 'Nesprávná odpověď: nápověda' : 'Nápověda'}</strong><p>{feedback}</p></>}</div>}
       {!ready && <div class="fallback-feedback"><p>Vysvětlení jednotlivých možností:</p>{options.map((option) => <details key={option.label}><summary>{option.label}</summary><p>{option.feedback}</p></details>)}</div>}
-      {revealExplanation && <details class="explanation choice-explanation" open={selected !== null}><summary>Vysvětlení a praktický krok</summary><p>{revealExplanation.explanation}</p><div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{revealExplanation.action}</p><small>Doporučení není zárukou bezpečí.</small></div></details>}
+      {revealExplanation && <details class="explanation choice-explanation" open={selected !== null}><summary>Vysvětlení a praktický krok</summary><p>{revealExplanation.explanation}</p>{video && <VideoHistory video={video} />}<div class="action-card"><div class="step-label">PRAKTICKÝ KROK</div><p>{revealExplanation.action}</p><small>Doporučení není zárukou bezpečí.</small></div></details>}
     </div>
   );
 }
